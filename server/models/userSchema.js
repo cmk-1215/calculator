@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     userName: String,
-    email: String,
-    ratings: [{ type: Schema.Types.ObjectId, ref: 'Ratings' }]
+    equations: [{ type: Schema.Types.ObjectId, ref: 'Equations' }]
 })
 
 module.exports = mongoose.model('User', userSchema)
