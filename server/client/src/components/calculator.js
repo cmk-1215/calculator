@@ -78,16 +78,17 @@ render() {
         <div className="row form">
             <div>
             <h1>Calculator App</h1>
-            <p>You may use this app to enter simple arithmetic problems and to see the most recent ones logged below. </p>
+            <p>Use this app to enter simple arithmetic problems and to see the most recent ones from you and other users logged below. </p>
             
             <br />
                 <Form>
-                    <div className="form-row">
-                        <div className="col">
+                  <div className="conatiner">
+                    <div className="row1">
+                        <div className="col-sm-2">
                             <Form.Control
                             
                                 id="form first-entry"
-                                className="input-group calculator-entry file-form tag-input shadow-sm"
+                                className="input file-form tag-input shadow-sm"
                                 size="md"
                                 type="text"
                                 placeholder="Ex: 2"
@@ -95,11 +96,11 @@ render() {
                                 onChange={this.updateFirst.bind(this)}
                                 />
                         </div>
-                        <div className="col">
+                        <div className="col-sm-2">
                             <Form.Control
                             
                                 id="form sign"
-                                className="calculator-entry file-form tag-input shadow-sm"
+                                className="input file-form tag-input shadow-sm"
                                 size="md"
                                 type="text"
                                 placeholder="*"
@@ -107,10 +108,10 @@ render() {
                                 onChange={this.updateSign.bind(this)}
                                 />
                         </div>
-                        <div className="col">
+                        <div className="col-sm-2">
                             <Form.Control
                                 id="form second-entry"
-                                className="calculator-entry file-form tag-input shadow-sm"
+                                className="input file-form tag-input shadow-sm"
                                 size="md"
                                 type="text"
                                 placeholder="4"
@@ -119,9 +120,9 @@ render() {
                                 />
                         </div>
                         
-                        </div>
-                         <div className="btn-conatiner">
+                      </div>
                          <br />
+                        <div>
                             <button
                                 id="submit-btn calc-button"
                                 onClick={this.calculate.bind(this)}
@@ -130,9 +131,9 @@ render() {
                                 className="calculator-entry file-form btn btn-primary btn-md">
                                 Calculate
                             </button>
-                            
-                        </div>
-                    
+                          </div>
+                        
+                    </div>
                 </Form>
                 <br/>
             </div>
