@@ -11,7 +11,7 @@ export const GET_RECENT_EQUATIONS = "GET_RECEDNT_EQUATIONS"
 
 //Requirements in body: title, imdb_id, img, rating_num, userName, email, description
 export function addEquation(equation) {
-    const url = ROOT_URL+`/api/equations`;
+    const url = `/api/equations`;
     
     const request = axios({
       method: "post",
@@ -29,7 +29,7 @@ export function addEquation(equation) {
 
 
 export function getRecentEquations() {
-  const url = ROOT_URL+`/api/equations`;
+  const url = `/api/equations`;
   const request = axios.get(url);
 
   return {

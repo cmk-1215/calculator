@@ -14,7 +14,7 @@ const cors = require("cors");
 //   });
 
 
-mongoose.connect(keys.MONGODB_URI || 'mongodb://localhost/calculator', {
+mongoose.connect(keys.MONGODB_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
