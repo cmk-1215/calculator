@@ -8,21 +8,20 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
-mongoose.connect(keys.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-
-
-// mongoose.connect(keys.MONGODB_URI || 'mongodb://localhost/calculator', {
+// mongoose.connect(keys.MONGODB_URI, {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 //   });
 
-// mongoose.connection.on('connected', () => {
-//     console.log("connected")
-// })
 
+mongoose.connect(keys.MONGODB_URI || 'mongodb://localhost/calculator', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+mongoose.connection.on('connected', () => {
+    console.log("connected")
+})
 
 
 const app = express();
