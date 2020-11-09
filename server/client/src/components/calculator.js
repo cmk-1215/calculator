@@ -78,11 +78,11 @@ render() {
         <div className="row form">
             <div>
             <h1>Calculator App</h1>
-            <p>You may use this app to enter simple arithemtic problems and to see the most recent ones logged below. </p>
+            <p>You may use this app to enter simple arithmetic problems and to see the most recent ones logged below. </p>
             
             <br />
                 <Form>
-                    <div className="form-row ">
+                    <div className="form-row">
                         <div className="col">
                             <Form.Control
                             
@@ -118,18 +118,21 @@ render() {
                                 onChange={this.updateSecond.bind(this)}
                                 />
                         </div>
-                         <div className="col">
+                        
+                        </div>
+                         <div className="btn-conatiner">
+                         <br />
                             <button
                                 id="submit-btn calc-button"
                                 onClick={this.calculate.bind(this)}
                                 size="lg"
                                 type="submit"
-                                className="calculator-entry file-form btn btn-primary btn-sm">
+                                className="calculator-entry file-form btn btn-primary btn-md">
                                 Calculate
                             </button>
                             
                         </div>
-                    </div>
+                    
                 </Form>
                 <br/>
             </div>
