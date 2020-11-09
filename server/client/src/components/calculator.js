@@ -131,7 +131,6 @@ render() {
                         </div>
                     </div>
                 </Form>
-                <p>This site uses a free version of MongoDB Atlas. As such, your data might not appear/be saved in the live heroku version. </p>
                 <br/>
             </div>
         </div>
