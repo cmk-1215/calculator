@@ -3,6 +3,10 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
 import { addEquation } from "../actions/index";
+import { getRecentEquations } from "../actions/index";
+import "../styles/calculator.css"
+
+
 
 
 class Calculator extends Component {
@@ -12,7 +16,9 @@ class Calculator extends Component {
     this.state = {
         firstNumber: "",
         sign: "",
-        secondNumber: ""
+        secondNumber: "",
+        fullProblem: "",
+        solution: ""
     }
   }
 
@@ -32,7 +38,7 @@ class Calculator extends Component {
   }
 
   calculate(event) {
-    event.preventDefault();
+    // event.preventDefault();
     //Error handeling to make sure that the user enters only numbers and correct signs in the inputs
     if (isNaN(this.state.firstNumber) || isNaN(this.state.secondNumber)) {
         alert("Please only enter integers as the first and second number")
@@ -43,25 +49,22 @@ class Calculator extends Component {
         //the following go through all the conditions of the arithemtic operators to compute and answer, and assign the string as "equation"
         if (this.state.sign === "*"){
             let answer = x * y
+            // this.setState({solution: answer})
             let equation = `${x} * ${y} = ${answer}`
+            // this.setState({fullProblem: equation})
             addEquation(equation)
-            console.log(equation)
-            console.log(this.state)
         } else if (this.state.sign === "+"){
             let answer = x + y
             let equation = `${x} + ${y} = ${answer}`
             addEquation(equation)
-            console.log(equation)
         } else if (this.state.sign === "-"){
             let answer = x - y
             let equation = `${x} - ${y} = ${answer}`
             addEquation(equation)
-            console.log(equation)
         } else if (this.state.sign === "/"){
             let answer = x / y
             let equation = `${x} / ${y} = ${answer}`
             addEquation(equation)
-            console.log(equation)
         } else {
             //if the user enteres an incorect operation, an error message appears
             alert("Please enter +, -, *, or / as signs")
@@ -71,48 +74,64 @@ class Calculator extends Component {
 
 render() {
   return (
-    <div>
-        <p>Calculator</p>
-        <Form>
-            <Form.Control
-                id="form"
-                className="file-form tag-input shadow-sm"
-                size="md"
-                type="text"
-                placeholder="first number"
-                value={this.state.title}
-                onChange={this.updateFirst.bind(this)}
-                />
-
-            <Form.Control
-                id="form"
-                className="file-form tag-input shadow-sm"
-                size="md"
-                type="text"
-                placeholder="Sign"
-                value={this.state.title}
-                onChange={this.updateSign.bind(this)}
-                />
-
-            <Form.Control
-                id="form"
-                className="file-form tag-input shadow-sm"
-                size="md"
-                type="text"
-                placeholder="Second number"
-                value={this.state.title}
-                onChange={this.updateSecond.bind(this)}
-                />
-
-            <button
-                id="submit-btn"
-                onClick={this.calculate.bind(this)}
-                size="lg"
-                type="submit"
-                className="file-form btn btn-primary btn-sm">
-                Calculate
-            </button>
-        </Form>
+    <div className="form-container">
+        <div className="row form">
+            <div>
+            <h1>Calculator App</h1>
+            <br />
+                <Form>
+                    <div className="form-row ">
+                        <div className="col">
+                            <Form.Control
+                            
+                                id="form first-entry"
+                                className="input-group calculator-entry file-form tag-input shadow-sm"
+                                size="md"
+                                type="text"
+                                placeholder="Ex: 2"
+                                value={this.state.title}
+                                onChange={this.updateFirst.bind(this)}
+                                />
+                        </div>
+                        <div className="col">
+                            <Form.Control
+                            
+                                id="form sign"
+                                className="calculator-entry file-form tag-input shadow-sm"
+                                size="md"
+                                type="text"
+                                placeholder="*"
+                                value={this.state.title}
+                                onChange={this.updateSign.bind(this)}
+                                />
+                        </div>
+                        <div className="col">
+                            <Form.Control
+                                id="form second-entry"
+                                className="calculator-entry file-form tag-input shadow-sm"
+                                size="md"
+                                type="text"
+                                placeholder="4"
+                                value={this.state.title}
+                                onChange={this.updateSecond.bind(this)}
+                                />
+                        </div>
+                         <div className="col">
+                            <button
+                                id="submit-btn calc-button"
+                                onClick={this.calculate.bind(this)}
+                                size="lg"
+                                type="submit"
+                                className="calculator-entry file-form btn btn-primary btn-sm">
+                                Calculate
+                            </button>
+                            
+                        </div>
+                    </div>
+                </Form>
+                <br/>
+            </div>
+        </div>
     </div>
     );
   }
@@ -123,7 +142,7 @@ render() {
 //   }
   
   function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ addEquation }, dispatch);
+    return bindActionCreators({ addEquation, getRecentEquations }, dispatch);
   }
   
   export default connect(null, mapDispatchToProps)(Calculator);

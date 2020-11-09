@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getRecentEquations } from "../actions/index";
 import _ from "lodash";
+import "../styles/recentList.css"
 
 
 
@@ -14,11 +15,12 @@ class recentList extends Component {
     this.props.getRecentEquations();
   }
 
-
+//return a list of the 10 most recent equations
   renderList(){
+      console.log(this.props)
       return _.map(this.props.recentList, equation => {
           return (
-            <li>
+            <li key={equation._id}>
             {equation.problem}
             </li>
           )
@@ -27,15 +29,14 @@ class recentList extends Component {
   }
 
   render() {
-      console.log(this.props)
-    
     return (
-        
-      <div>
-          <p>Most Recent equations:</p>
-          <ul>
-              {this.renderList()}
-          </ul>
+      <div className="recent-container">
+          <div className="recent-list">
+          <h2>Most Recent equations:</h2>
+            <ul>
+                {this.renderList()}
+            </ul>
+          </div>
       </div>
     );
   }

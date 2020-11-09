@@ -15,8 +15,10 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Calculator />
-    <RecentList />
+    <div className="container root-container">
+      <Calculator />
+      <RecentList />
+    </div>
   </Provider>,
   document.getElementById('root')
 );
