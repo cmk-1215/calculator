@@ -78,6 +78,7 @@ render() {
         <div className="row form">
             <div>
             <h1>Calculator App</h1>
+            <p>You may use this app to enter simple arithemtic problems and to see the most recent ones logged below. </p>
             <br />
                 <Form>
                     <div className="form-row ">
