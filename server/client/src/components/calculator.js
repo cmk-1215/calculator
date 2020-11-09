@@ -1,5 +1,8 @@
 import React, {Component} from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
+import { addEquation } from "../actions/index";
 
 
 class Calculator extends Component {
@@ -9,7 +12,7 @@ class Calculator extends Component {
     this.state = {
         firstNumber: "",
         sign: "",
-        secondEntry: ""
+        secondNumber: ""
     }
   }
 
@@ -30,13 +33,37 @@ class Calculator extends Component {
 
   calculate(event) {
     event.preventDefault();
-    //Error handleing to make sure that the user enters only numbers and correct signs in the inputs
+    //Error handeling to make sure that the user enters only numbers and correct signs in the inputs
     if (isNaN(this.state.firstNumber) || isNaN(this.state.secondNumber)) {
-        alert("Please only enter integers in the first and second number")
+        alert("Please only enter integers as the first and second number")
     } else {
-        if (this.state.sign == "*" || this.state.sign == "+" || this.state.sign == "-" || this.state.sign == "/"){
-        alert("yay")
+        //turn the string into an integer to compute values
+        var x = parseInt(this.state.firstNumber, 10) 
+        var y = parseInt(this.state.secondNumber, 10) 
+        //the following go through all the conditions of the arithemtic operators to compute and answer, and assign the string as "equation"
+        if (this.state.sign === "*"){
+            let answer = x * y
+            let equation = `${x} * ${y} = ${answer}`
+            addEquation(equation)
+            console.log(equation)
+            console.log(this.state)
+        } else if (this.state.sign === "+"){
+            let answer = x + y
+            let equation = `${x} + ${y} = ${answer}`
+            addEquation(equation)
+            console.log(equation)
+        } else if (this.state.sign === "-"){
+            let answer = x - y
+            let equation = `${x} - ${y} = ${answer}`
+            addEquation(equation)
+            console.log(equation)
+        } else if (this.state.sign === "/"){
+            let answer = x / y
+            let equation = `${x} / ${y} = ${answer}`
+            addEquation(equation)
+            console.log(equation)
         } else {
+            //if the user enteres an incorect operation, an error message appears
             alert("Please enter +, -, *, or / as signs")
         }
     }
@@ -91,4 +118,12 @@ render() {
   }
 };
   
-  export default (Calculator);
+// function mapStateToProps(state) {
+//     return { equation:  };
+//   }
+  
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ addEquation }, dispatch);
+  }
+  
+  export default connect(null, mapDispatchToProps)(Calculator);
