@@ -79,6 +79,7 @@ render() {
             <div>
             <h1>Calculator App</h1>
             <p>You may use this app to enter simple arithemtic problems and to see the most recent ones logged below. </p>
+            
             <br />
                 <Form>
                     <div className="form-row ">
@@ -130,6 +131,7 @@ render() {
                         </div>
                     </div>
                 </Form>
+                <p>This site uses a free version of MongoDB Atlas. As such, your data might not appear/be saved in the live heroku version. </p>
                 <br/>
             </div>
         </div>
