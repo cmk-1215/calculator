@@ -42,6 +42,8 @@ class Calculator extends Component {
     //Error handeling to make sure that the user enters only numbers and correct signs in the inputs
     if (isNaN(this.state.firstNumber) || isNaN(this.state.secondNumber)) {
         alert("Please only enter integers as the first and second number")
+    } else if (isNaN(this.state.firstNumber) && isNaN(this.state.secondNumber)){
+        alert("Please only enter integers as the first and second number")
     } else {
         //turn the string into an integer to compute values
         var x = parseInt(this.state.firstNumber, 10) 
